@@ -1,12 +1,11 @@
 :root {
-  --hue: 27;
-  --sat: 69%;
+  /* Blob-matching green palette */
   --white: hsl(0, 0%, 100%);
-  --purple-primary: rgba(132, 0, 255, 1);
-  --purple-glow: rgba(132, 0, 255, 0.2);
-  --purple-border: rgba(132, 0, 255, 0.8);
-  --border-color: #392e4e;
-  --background-dark: #060010;
+  --purple-primary: #7bf1a8;        /* primary green (kept name for compatibility) */
+  --purple-glow: rgba(34,197,94,0.18); /* subtle green glow */
+  --purple-border: #4bd68a;         /* stronger green border tint */
+  --border-color: #00a63e;          /* darker accent green */
+  --background-dark: #05220c;       /* deep green background */
   color-scheme: light dark;
 }
 
@@ -151,8 +150,8 @@
   padding: 6px;
   background: radial-gradient(
     var(--glow-radius) circle at var(--glow-x) var(--glow-y),
-    rgba(132, 0, 255, calc(var(--glow-intensity) * 0.8)) 0%,
-    rgba(132, 0, 255, calc(var(--glow-intensity) * 0.4)) 30%,
+    rgba(34,197,94, calc(var(--glow-intensity) * 0.8)) 0%,
+    rgba(34,197,94, calc(var(--glow-intensity) * 0.4)) 30%,
     transparent 60%
   );
   border-radius: inherit;
@@ -175,7 +174,7 @@
 
 .card--border-glow:hover {
   box-shadow:
-    0 4px 20px rgba(46, 24, 78, 0.4),
+    0 4px 20px rgba(6, 70, 32, 0.4),
     0 0 30px var(--purple-glow);
 }
 
@@ -191,14 +190,14 @@
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: rgba(132, 0, 255, 0.2);
+  background: rgba(34,197,94, 0.2);
   border-radius: 50%;
   z-index: -1;
 }
 
 .particle-container:hover {
   box-shadow:
-    0 4px 20px rgba(46, 24, 78, 0.2),
+    0 4px 20px rgba(6, 70, 32, 0.2),
     0 0 30px var(--purple-glow);
 }
 
