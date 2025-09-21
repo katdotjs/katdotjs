@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 import MagicBento from "@/components/MagicBento"
 import TextPressure from "@/components/TextPressure"
+import StarBorder from "@/components/StarBorder"
 
 export default function Home() {
   const [isDark, setIsDark] = useState(true)
@@ -248,22 +249,6 @@ export default function Home() {
               <MagicBento
                 items={[
                   {
-                    title: "Charting Fun",
-                    description: "What I learned while building an app that visualizes different types of data.",
-                    date: "Oct 2025",
-                    readTime: "8 min",
-                    url: "/blog/charting-fun",
-                    label: "Blog"
-                  },
-                  {
-                    title: "How to use AI to boost your productivity",
-                    description: "Tips and tricks on integrating AI into your daily workflow the right way.",
-                    date: "Nov 2025",
-                    readTime: "4 min",
-                    url: "/blog/ai-productivity",
-                    label: "Blog"
-                  },
-                  {
                     title: "Lizard",
                     description: "Your favorite button.",
                     date: "Sep 2025",
@@ -279,12 +264,29 @@ export default function Home() {
                     url: "projects/tarot-card-reading",
                     label: "Project"
                   },
+                  {
+                    title: "Charting Fun",
+                    description: "What I learned while building an app that visualizes different types of data.",
+                    date: "Oct 2025",
+                    readTime: "8 min",
+                    url: "/blog/charting-fun",
+                    label: "Blog"
+                  },
+                  {
+                    title: "How to use AI to boost your productivity",
+                    description: "Tips and tricks on integrating AI into your daily workflow the right way.",
+                    date: "Nov 2025",
+                    readTime: "4 min",
+                    url: "/blog/ai-productivity",
+                    label: "Blog"
+                  },
                 ]}
                 onCardClick={(item) => router.push((item as any).url ?? "/")}
                 enableStars
                 enableSpotlight
                 enableBorderGlow
                 particleCount={8}
+                glowColor="0, 130, 54"
               />
             </div>
           </div>
@@ -340,18 +342,20 @@ export default function Home() {
                   { name: "GitHub", handle: "@katdotjs", url: "https://github.com/katdotjs" },
                   { name: "LinkedIn", handle: "@katterranova", url: "https://www.linkedin.com/in/katgraham/" },
                 ].map((social) => (
-                  <Link
-                    key={social.name}
-                    href={social.url}
-                    className="group p-4 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300 hover:shadow-sm"
-                  >
-                    <div className="space-y-2">
-                      <div className="text-foreground group-hover:text-muted-foreground transition-colors duration-300">
-                        {social.name}
+                  <StarBorder key={social.name} color="cyan" as="button" speed="5s" thickness={5}>
+                    <Link
+                      key={social.name}
+                      href={social.url}
+                      className="group p-4"
+                    >
+                      <div className="space-y-2">
+                        <div className="text-foreground group-hover:text-muted-foreground transition-colors duration-300">
+                          {social.name}
+                        </div>
+                        <div className="text-sm text-muted-foreground">{social.handle}</div>
                       </div>
-                      <div className="text-sm text-muted-foreground">{social.handle}</div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </StarBorder>
                 ))}
               </div>
             </div>
