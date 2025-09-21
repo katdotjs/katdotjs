@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 import MagicBento from "@/components/MagicBento"
+import TextPressure from "@/components/TextPressure"
 
 export default function Home() {
   const [isDark, setIsDark] = useState(true)
@@ -66,11 +67,33 @@ export default function Home() {
             <div className="lg:col-span-3 space-y-6 sm:space-y-8">
               <div className="space-y-3 sm:space-y-2">
                 <div className="text-sm text-muted-foreground font-mono tracking-wider">PORTFOLIO / 2025</div>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
-                  Kat
+                <div className="font-light tracking-tight">
+                  <TextPressure
+                    text="Kat"
+                    flex={true}
+                    alpha={false}
+                    stroke={false}
+                    width={false}
+                    weight={true}
+                    italic={true}
+                    textColor="#ffffff"
+                    strokeColor="#ff0000"
+                    minFontSize={20}
+                  />
                   <br />
-                  <span className="text-muted-foreground">Terranova</span>
-                </h1>
+                  <TextPressure
+                      text="Terranova"
+                      flex={true}
+                      alpha={false}
+                      stroke={false}
+                      width={true}
+                      weight={true}
+                      italic={true}
+                      textColor="#ffffff"
+                      strokeColor="#ff0000"
+                      minFontSize={20}
+                    />
+                </div>
               </div>
 
               <div className="space-y-6 max-w-md">
@@ -91,7 +114,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="lg:col-span-2 flex flex-col justify-end space-y-6 sm:space-y-8 mt-8 lg:mt-0">
+            <div className="lg:col-span-2 flex flex-col justify-end! space-y-6 sm:space-y-8 mt-8 lg:mt-0">
               <div className="space-y-4">
                 <div className="text-sm text-muted-foreground font-mono">CURRENTLY</div>
                 <div className="space-y-2">
@@ -171,7 +194,7 @@ export default function Home() {
                     <p className="text-muted-foreground leading-relaxed max-w-lg">{job.description}</p>
                   </div>
 
-                  <div className="lg:col-span-4 flex flex-wrap gap-2 lg:justify-end mt-2 lg:mt-0">
+                  <div className="col-span-4! flex flex-wrap gap-2 justify-end! mt-2 lg:mt-0">
                     {job.tech.map((tech) => (
                       <span
                         key={tech}
