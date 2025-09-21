@@ -78,21 +78,21 @@ export default function Home() {
                     italic={true}
                     textColor="#ffffff"
                     strokeColor="#ff0000"
-                    minFontSize={20}
+                    minFontSize={50}
                   />
                   <br />
                   <TextPressure
-                      text="Terranova"
-                      flex={true}
-                      alpha={false}
-                      stroke={false}
-                      width={true}
-                      weight={true}
-                      italic={true}
-                      textColor="#ffffff"
-                      strokeColor="#ff0000"
-                      minFontSize={20}
-                    />
+                    text="Terranova"
+                    flex={true}
+                    alpha={false}
+                    stroke={false}
+                    width={true}
+                    weight={true}
+                    italic={true}
+                    textColor="#ffffff"
+                    strokeColor="#ff0000"
+                    minFontSize={50}
+                  />
                 </div>
               </div>
 
@@ -105,7 +105,7 @@ export default function Home() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 justify-start!">
                     <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
                     Not Available for work
                   </div>
@@ -126,7 +126,7 @@ export default function Home() {
 
               <div className="space-y-4">
                 <div className="text-sm text-muted-foreground font-mono">FOCUS</div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 justify-start!">
                   {["Next JS", "React", "TypeScript", "Node.js", "AWS"].map((skill) => (
                     <span
                       key={skill}
@@ -148,7 +148,20 @@ export default function Home() {
         >
           <div className="space-y-12 sm:space-y-16">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-              <h2 className="text-3xl sm:text-4xl font-light">Selected Work</h2>
+              <div className="w-1/2">
+                <TextPressure
+                  text="Selected Work"
+                  flex={true}
+                  alpha={false}
+                  stroke={false}
+                  width={true}
+                  weight={true}
+                  italic={true}
+                  textColor="#ffffff"
+                  strokeColor="#ff0000"
+                  minFontSize={40}
+                />
+              </div>
               <div className="text-sm text-muted-foreground font-mono">2019 — 2025</div>
             </div>
 
@@ -194,11 +207,11 @@ export default function Home() {
                     <p className="text-muted-foreground leading-relaxed max-w-lg">{job.description}</p>
                   </div>
 
-                  <div className="col-span-4! flex flex-wrap gap-2 justify-end! mt-2 lg:mt-0">
+                  <div className="flex flex-row flex-wrap justify-end! lg:col-span-4 mt-0">
                     {job.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 text-xs text-muted-foreground rounded group-hover:border-muted-foreground/50 transition-colors duration-500"
+                        className="p-1 h-fit text-xs text-muted-foreground group-hover:border-muted-foreground/50 transition-colors duration-500"
                       >
                         {tech}
                       </span>
@@ -216,7 +229,20 @@ export default function Home() {
           className="min-h-screen py-20 sm:py-32 opacity-0"
         >
           <div className="space-y-12 sm:space-y-16">
-            <h2 className="text-3xl sm:text-4xl font-light">Fun Projects/Blogs</h2>
+            <div className="w-1/2">
+              <TextPressure
+                text="Fun Projects & Blog"
+                flex={true}
+                alpha={false}
+                stroke={false}
+                width={true}
+                weight={true}
+                italic={true}
+                textColor="#ffffff"
+                strokeColor="#ff0000"
+                minFontSize={40}
+              />
+            </div>
 
             <div>
               <MagicBento
@@ -267,7 +293,20 @@ export default function Home() {
   <section id="connect" ref={(el) => { sectionsRef.current[3] = el }} className="py-20 sm:py-32 opacity-0">
           <div className="grid lg:grid-cols-2 gap-12 sm:gap-16">
             <div className="space-y-6 sm:space-y-8">
-              <h2 className="text-3xl sm:text-4xl font-light">Let's Connect</h2>
+              <div className="w-1/2">
+                <TextPressure
+                  text="Let's Connect"
+                  flex={true}
+                  alpha={false}
+                  stroke={false}
+                  width={true}
+                  weight={true}
+                  italic={true}
+                  textColor="#ffffff"
+                  strokeColor="#ff0000"
+                  minFontSize={40}
+                />
+              </div>
 
               <div className="space-y-6">
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
@@ -277,7 +316,7 @@ export default function Home() {
                 <div className="space-y-4">
                   <Link
                     href="mailto:kmgraham811@gmail.com"
-                    className="group flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors duration-300"
+                    className="group flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors duration-300 justify-start!"
                   >
                     <span className="text-base sm:text-lg">kmgraham811@gmail.com</span>
                     <svg
