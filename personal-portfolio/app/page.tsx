@@ -83,8 +83,8 @@ export default function Home() {
 
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    Available for work
+                    <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                    Not Available for work
                   </div>
                   <div>Rochester, NY</div>
                 </div>
@@ -195,72 +195,48 @@ export default function Home() {
           <div className="space-y-12 sm:space-y-16">
             <h2 className="text-3xl sm:text-4xl font-light">Fun Projects/Blogs</h2>
 
-            <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
-              {[
-                {
-                  title: "Lizard",
-                  excerpt: "Your favorite button.",
-                  date: "Sep 2025",
-                  readTime: "",
-                  url: "projects/lizard"
-                },
-                {
-                  title: "Charting Fun",
-                  excerpt: "What I learned while building an app that visualizes different types of data.",
-                  date: "Oct 2025",
-                  readTime: "8 min",
-                  url: "/blog/charting-fun"
-                },
-                {
-                  title: "Tarot Card Reading",
-                  excerpt: "Ai powered tarot card reading... because why not?",
-                  date: "Oct 2025",
-                  readTime: "6 min",
-                  url: "projects/tarot-card-reading"
-                },
-                {
-                  title: "How to use AI to boost your productivity",
-                  excerpt: "Tips and tricks on integrating AI into your daily workflow the right way.",
-                  date: "Nov 2025",
-                  readTime: "4 min",
-                  url: "/blog/ai-productivity"
-                },
-              ].map((post, index) => (
-                <article
-                  key={index}
-                  className="group p-6 sm:p-8 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-lg cursor-pointer"
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between text-xs text-muted-foreground font-mono">
-                      <span>{post.date}</span>
-                      <span>{post.readTime}</span>
-                    </div>
-
-                    <h3 className="text-lg sm:text-xl font-medium group-hover:text-muted-foreground transition-colors duration-300">
-                      {post.title}
-                    </h3>
-
-                    <p className="text-muted-foreground leading-relaxed">{post.excerpt}</p>
-
-                    <div onClick={() => router.push(post.url)} className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                      <span>Read more</span>
-                      <svg
-                        className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </article>
-              ))}
+            <div>
+              <MagicBento
+                items={[
+                  {
+                    title: "Charting Fun",
+                    description: "What I learned while building an app that visualizes different types of data.",
+                    date: "Oct 2025",
+                    readTime: "8 min",
+                    url: "/blog/charting-fun",
+                    label: "Blog"
+                  },
+                  {
+                    title: "How to use AI to boost your productivity",
+                    description: "Tips and tricks on integrating AI into your daily workflow the right way.",
+                    date: "Nov 2025",
+                    readTime: "4 min",
+                    url: "/blog/ai-productivity",
+                    label: "Blog"
+                  },
+                  {
+                    title: "Lizard",
+                    description: "Your favorite button.",
+                    date: "Sep 2025",
+                    readTime: "",
+                    url: "projects/lizard",
+                    label: "Project"
+                  },
+                  {
+                    title: "Tarot Card Reading",
+                    description: "Ai powered tarot card reading... because why not?",
+                    date: "Oct 2025",
+                    readTime: "6 min",
+                    url: "projects/tarot-card-reading",
+                    label: "Project"
+                  },
+                ]}
+                onCardClick={(item) => router.push((item as any).url ?? "/")}
+                enableStars
+                enableSpotlight
+                enableBorderGlow
+                particleCount={8}
+              />
             </div>
           </div>
         </section>
