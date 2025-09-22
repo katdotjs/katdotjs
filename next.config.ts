@@ -1,7 +1,7 @@
- /** @type {import('next').NextConfig} */
-const nextConfig = {
-    output: "exports", // lightweight but no dynamic routes & api support
-    // output: "standalone", // bulkier but supports dynamic routes & api
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
 };
 
-module.exports = nextConfig;
+export default nextConfig;
