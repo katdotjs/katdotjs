@@ -30,13 +30,7 @@ jobs:
           static_site_generator: next
 
       - name: Build with Next.js 🏗️
-        run: |
-          # install deps (use --legacy-peer-deps if you have peer dependency errors)
-          npm ci --if-present
-          # build and export static site to ./out (required by upload-pages-artifact)
-          npx next build
-          npx next export
-        working-directory: .
+        run: npx next build
 
       - name: Upload artifact 📡
         uses: actions/upload-pages-artifact@v3
