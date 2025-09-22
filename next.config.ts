@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  basePath: "/katdotjs",
+  output: "export",
+  reactStrictMode: true,
 };
 
 export default nextConfig;
