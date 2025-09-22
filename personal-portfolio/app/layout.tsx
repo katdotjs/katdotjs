@@ -11,9 +11,14 @@ const geist = Geist({
 })
 
 export const metadata: Metadata = {
-  title: "Kat Terranova - M Science frontend Developer",
+  title: "Kat Terranova",
   description: "Frontend Developer from Rochester, NY with 5 years of experience.",
   generator: "v0.app",
+  icons: {
+    icon: "/cat.png",
+    shortcut: "/cat.png",
+    apple: "/cat.png",
+  },
 }
 
 export default function RootLayout({
