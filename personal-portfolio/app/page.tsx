@@ -6,11 +6,30 @@ import { useRouter } from "next/navigation"
 import MagicBento from "@/components/MagicBento"
 import TextPressure from "@/components/TextPressure"
 import StarBorder from "@/components/StarBorder"
+import Image from "next/image"
 
 export default function Home() {
   const [isDark, setIsDark] = useState(true)
   const [activeSection, setActiveSection] = useState("")
+  const [lizardAnimating, setLizardAnimating] = useState(false)
+  const lizardTimeoutRef = useRef<number | null>(null)
   const sectionsRef = useRef<(HTMLElement | null)[]>([])
+
+  const playLizard = () => {
+    const audio = new Audio('/lizard-stereo-1.mp3')
+    audio.play()
+  }
+
+  const handleLizardClick = () => {
+    playLizard()
+    // trigger a short transform animation by toggling state
+    setLizardAnimating(true)
+    if (lizardTimeoutRef.current) window.clearTimeout(lizardTimeoutRef.current)
+    lizardTimeoutRef.current = window.setTimeout(() => {
+      setLizardAnimating(false)
+      lizardTimeoutRef.current = null
+    }, 600) // match duration below (600ms)
+  }
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark)
@@ -99,10 +118,7 @@ export default function Home() {
 
               <div className="space-y-6 max-w-md">
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  Frontend Developer crafting digital experiences at the intersection of
-                  <span className="text-foreground"> design</span>,<span className="text-foreground"> technology</span>,
-                  and
-                  <span className="text-foreground"> user experience</span>.
+                  Frontend developer building accessible, responsive interfaces that turn product goals into intuitive user experiences using <strong>React</strong>, <strong>TypeScript</strong>, and design systems.
                 </p>
 
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-sm text-muted-foreground">
@@ -128,7 +144,7 @@ export default function Home() {
               <div className="space-y-4">
                 <div className="text-sm text-muted-foreground font-mono">FOCUS</div>
                 <div className="flex flex-wrap gap-2 justify-start!">
-                  {["Next JS", "React", "TypeScript", "Node.js", "AWS"].map((skill) => (
+                  {["Next JS", "React", "TypeScript", "Node.js", "AWS", "Git"].map((skill) => (
                     <span
                       key={skill}
                       className="px-3 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
@@ -151,7 +167,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
               <div className="w-1/2">
                 <TextPressure
-                  text="Selected Work"
+                  text="Employment"
                   flex={true}
                   alpha={false}
                   stroke={false}
@@ -180,14 +196,21 @@ export default function Home() {
                   role: "Frontend Engineer",
                   company: "Paychex",
                   description: "Developed and maintained sales and marketing websites to promote HR solutions.",
-                  tech: ["React", "Node.js", "Oracle Commerce Cloud", "Python"],
+                  tech: ["React", "Node.js", "OCC", "Python"],
+                },
+                {
+                  year: "2019",
+                  role: "Digital Operations Intern",
+                  company: "Excellus",
+                  description: "Created in-depth testing plans for the Excellus website and mobile apps.",
+                  tech: ["React", "Node.js", "OCC", "Python"],
                 },
                 {
                   year: "2017-2018",
                   role: "Assistant Manager",
                   company: "Tinseltown",
                   description: "Managed daily operations and led a team to enhance customer experience in a fast-paced environment.",
-                  tech: ["Leadership", "Customer Service", "Team Management"],
+                  tech: ["Leadership", "Customer Service"],
                 },
               ].map((job, index) => (
                 <div
@@ -208,11 +231,11 @@ export default function Home() {
                     <p className="text-muted-foreground leading-relaxed max-w-lg">{job.description}</p>
                   </div>
 
-                  <div className="flex flex-row flex-wrap justify-end! lg:col-span-4 mt-0">
+                  <div className="flex flex-row justify-end! gap-2 lg:col-span-4">
                     {job.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="p-1 h-fit text-xs text-muted-foreground group-hover:border-muted-foreground/50 transition-colors duration-500"
+                        className="px-3 py-1 h-fit border-1 rounded-full text-xs text-muted-foreground group-hover:border-muted-foreground/50 transition-colors duration-500"
                       >
                         {tech}
                       </span>
@@ -225,14 +248,14 @@ export default function Home() {
         </section>
 
         <section
-          id="thoughts"
+          id="projects"
           ref={(el) => { sectionsRef.current[2] = el }}
-          className="min-h-screen py-20 sm:py-32 opacity-0"
+          className="py-20 sm:py-32 opacity-0"
         >
           <div className="space-y-12 sm:space-y-16">
             <div className="w-1/2">
               <TextPressure
-                text="Fun Projects & Blog"
+                text="Projects & Blog"
                 flex={true}
                 alpha={false}
                 stroke={false}
@@ -249,36 +272,20 @@ export default function Home() {
               <MagicBento
                 items={[
                   {
-                    title: "Lizard",
-                    description: "Your favorite button.",
-                    date: "Sep 2025",
+                    title: "Onboarding Form",
+                    description: "Onboarding form built with React.",
+                    date: "2020-2024",
                     readTime: "",
-                    url: "projects/lizard",
+                    url: "https://get.paychex.com/product/BDL00301",
                     label: "Project"
-                  },
+                  },                  
                   {
-                    title: "Tarot Card Reading",
-                    description: "Ai powered tarot card reading... because why not?",
-                    date: "Oct 2025",
-                    readTime: "6 min",
-                    url: "projects/tarot-card-reading",
+                    title: "Paychex Store",
+                    description: "E-commerce platform for HR and Payroll products.",
+                    date: "2020-2024",
+                    readTime: "",
+                    url: "https://www.paychexstore.com",
                     label: "Project"
-                  },
-                  {
-                    title: "Charting Fun",
-                    description: "What I learned while building an app that visualizes different types of data.",
-                    date: "Oct 2025",
-                    readTime: "8 min",
-                    url: "/blog/charting-fun",
-                    label: "Blog"
-                  },
-                  {
-                    title: "How to use AI to boost your productivity",
-                    description: "Tips and tricks on integrating AI into your daily workflow the right way.",
-                    date: "Nov 2025",
-                    readTime: "4 min",
-                    url: "/blog/ai-productivity",
-                    label: "Blog"
                   },
                 ]}
                 onCardClick={(item) => router.push((item as any).url ?? "/")}
@@ -288,6 +295,22 @@ export default function Home() {
                 particleCount={8}
                 glowColor="0, 130, 54"
               />
+            </div>
+            <div className="flex flex-col items-center gap-4">
+              <Image
+                src="/lizard.png"
+                alt="lizard"
+                width={128}
+                height={128}
+                // when clicked we briefly scale + rotate the image with a smooth transition
+                className={`border rounded-full hover:cursor-pointer transition-transform duration-300 ${
+                  lizardAnimating
+                    ? "scale-125 rotate-6 ease-out duration-600"
+                    : "hover:scale-105"
+                }`}
+                onClick={handleLizardClick}
+              />
+               <p className="text-sm text-muted-foreground">More projects and blog posts incoming soon...</p>
             </div>
           </div>
         </section>
@@ -342,7 +365,7 @@ export default function Home() {
                   { name: "GitHub", handle: "@katdotjs", url: "https://github.com/katdotjs" },
                   { name: "LinkedIn", handle: "@katterranova", url: "https://www.linkedin.com/in/katgraham/" },
                 ].map((social) => (
-                  <StarBorder key={social.name} color="cyan" as="button" speed="5s" thickness={5}>
+                  <StarBorder key={social.name} color="#4bd68a" speed="5s" thickness={3}>
                     <Link
                       key={social.name}
                       href={social.url}
@@ -365,8 +388,8 @@ export default function Home() {
         <footer className="py-12 sm:py-16 border-t border-border">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 sm:gap-8">
             <div className="space-y-2">
-              <div className="text-sm text-muted-foreground">© 2025 Felix Macaspac. All rights reserved.</div>
-              <div className="text-xs text-muted-foreground">Built with v0.dev by Felix Macaspac</div>
+              <div className="text-sm text-muted-foreground">© 2025 Kat Terranova. All rights reserved.</div>
+              <div className="text-xs text-muted-foreground">Template Built with v0.dev by Felix Macaspac</div>
             </div>
 
           </div>

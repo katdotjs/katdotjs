@@ -499,11 +499,15 @@ const GlobalSpotlight: React.FC<{
 const BentoCardGrid: React.FC<{
   children: React.ReactNode;
   gridRef?: React.RefObject<HTMLDivElement | null>;
-}> = ({ children, gridRef }) => (
-  <div className="card-grid bento-section" ref={gridRef}>
-    {children}
-  </div>
-);
+  itemsCount?: number;
+}> = ({ children, gridRef, itemsCount }) => {
+  const extraClass = itemsCount === 2 ? 'cards-2' : itemsCount === 3 ? 'cards-3' : '';
+  return (
+    <div className={`card-grid bento-section ${extraClass}`} ref={gridRef}>
+      {children}
+    </div>
+  );
+};
 
 const useMobileDetection = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -538,7 +542,7 @@ const MagicBento: React.FC<BentoProps> = ({
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
-
+  const source = items ?? cardData;
   return (
     <>
       {enableSpotlight && (
@@ -551,8 +555,8 @@ const MagicBento: React.FC<BentoProps> = ({
         />
       )}
 
-      <BentoCardGrid gridRef={gridRef}>
-        {(items ?? cardData).map((card, index) => {
+      <BentoCardGrid gridRef={gridRef} itemsCount={source.length}>
+        {source.map((card, index) => {
           const baseClassName = `card ${textAutoHide ? 'card--text-autohide' : ''} ${enableBorderGlow ? 'card--border-glow' : ''}`;
           const cardProps = {
             className: baseClassName,

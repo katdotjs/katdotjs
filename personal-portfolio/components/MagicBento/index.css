@@ -17,6 +17,14 @@
   font-size: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
 }
 
+.card-grid.cards-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card-grid.cards-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -112,6 +120,11 @@
   .card {
     width: 100%;
     min-height: 180px;
+  }
+
+  .card-grid.cards-2,
+  .card-grid.cards-3 {
+    grid-template-columns: 1fr;
   }
 }
 
