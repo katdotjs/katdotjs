@@ -1,4 +1,6 @@
-# Minimalist Portfolio Website
+# Kat Terranova Portfolio Website 
+
+## Template Used: Minimalist Portfolio Website
 
 A clean, modern portfolio website built with Next.js and Tailwind CSS, featuring smooth animations and dark/light theme support.
 
@@ -16,6 +18,7 @@ A clean, modern portfolio website built with Next.js and Tailwind CSS, featuring
 - [TypeScript](https://www.typescriptlang.org/) - Type safety
 - [Tailwind CSS](https://tailwindcss.com/) - Styling
 - [v0.dev](https://v0.dev/) - AI-powered development
+- [React Bits](https://reactbits.dev/) - Fun React Components and Animations
 
 ## 📦 Getting Started
 
@@ -47,3 +50,4 @@ Open source and available under the [MIT License](LICENSE).
 ---
 
 **Built with ❤️ using [v0.dev](https://v0.dev) by Felix Macaspac**
+**Edited by Kat Terranova**
