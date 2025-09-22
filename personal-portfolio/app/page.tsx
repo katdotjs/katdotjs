@@ -133,6 +133,13 @@ export default function Home() {
 
             <div className="lg:col-span-2 flex flex-col justify-end! space-y-6 sm:space-y-8 mt-8 lg:mt-0">
               <div className="space-y-4">
+                <Image 
+                  src="cat.png"
+                  alt="Cat Working"
+                  width={500}
+                  height={300}
+                  className="hidden lg:block rounded-lg"
+                />
                 <div className="text-sm text-muted-foreground font-mono">CURRENTLY</div>
                 <div className="space-y-2">
                   <div className="text-foreground">Frontend Developer</div>
